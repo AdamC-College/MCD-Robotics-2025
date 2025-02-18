@@ -99,11 +99,19 @@ public final class Constants {
   public static final class NeoMotorConstants {
     public static final double kFreeSpeedRpm = 5676;
   }
-public static final class ClawConstants{
-  public static final int kPneumaticsModuleCanId = 13;
-  public static final int kForwardChannel = 2;
-  public static final int kReverseChannel = 1;
-  //public static final int kMinPressure = 105;
-  //public static final int kMaxPressure = 115;
-}
+  public static final class ClawConstants{
+    public static final int kPneumaticsModuleCanId = 13;
+    public static final int kForwardChannel = 2;
+    public static final int kReverseChannel = 1;
+    public static final int kMinPressure = 105;
+    public static final int kMaxPressure = 115;
+    public static final double kMaxRotationClawSpeed=0.3;
+  }
+  public static final class ElevatorConstants{
+    public static final int orginalPos=0;
+    public static final int pos1=0;
+    public static final int pos2=0;
+    public static final int pos3=0;
+    public static final int pos4=8;
+  }
 }
