@@ -100,6 +100,8 @@ public final class Constants {
     public static final double kFreeSpeedRpm = 5676;
   }
   public static final class ClawConstants{
+    public static final int clawMotor1=13;
+    public static final int clawMotor2=14; 
     public static final int kPneumaticsModuleCanId = 13;
     public static final int kForwardChannel = 2;
     public static final int kReverseChannel = 1;
