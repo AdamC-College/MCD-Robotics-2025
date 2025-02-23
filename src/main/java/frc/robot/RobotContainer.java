@@ -25,6 +25,7 @@ import edu.wpi.first.wpilibj2.command.SwerveControllerCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import java.util.List;
+import frc.robot.RobotCommands.*;
 
 /*
  * This class is where the bulk of the robot should be declared.  Since Command-based is a
@@ -37,7 +38,8 @@ public class RobotContainer {
   private final DriveSubsystem m_robotDrive = new DriveSubsystem();
 
   // The driver's controller
-  XboxController m_driverController = new XboxController(OIConstants.kDriverControllerPort);
+  XboxController pilot = new XboxController(OIConstants.kDriverControllerPort);
+  XboxController copilot = new XboxController(OIConstants.kCopilotControllerPort);
 
   /**
    * The container for the robot. Contains subsystems, OI devices, and commands.
@@ -52,9 +54,9 @@ public class RobotContainer {
         // Turning is controlled by the X axis of the right stick.
         new RunCommand(
             () -> m_robotDrive.drive(
-                -MathUtil.applyDeadband(m_driverController.getLeftY(), OIConstants.kDriveDeadband),
-                -MathUtil.applyDeadband(m_driverController.getLeftX(), OIConstants.kDriveDeadband),
-                -MathUtil.applyDeadband(m_driverController.getRightX(), OIConstants.kDriveDeadband),
+                -MathUtil.applyDeadband(pilot.getLeftY(), OIConstants.kDriveDeadband),
+                -MathUtil.applyDeadband(pilot.getLeftX(), OIConstants.kDriveDeadband),
+                -MathUtil.applyDeadband(pilot.getRightX(), OIConstants.kDriveDeadband),
                 true),
             m_robotDrive));
   }
@@ -69,12 +71,12 @@ public class RobotContainer {
    * {@link JoystickButton}.
    */
   private void configureButtonBindings() {
-    new JoystickButton(m_driverController, Button.kR1.value)
+    new JoystickButton(pilot, Button.kR1.value)
         .whileTrue(new RunCommand(
             () -> m_robotDrive.setX(),
             m_robotDrive));
 
-    new JoystickButton(m_driverController, Button.kTriangle.value)
+    new JoystickButton(pilot, Button.kTriangle.value)
         .whileTrue(new RunCommand(
             () -> System.err.println("testing"),
             m_robotDrive));
